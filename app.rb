@@ -1,10 +1,10 @@
-require 'lib'
+require_relative 'lib'
 
 input = nil
 
 while input != 'exit' do
   begin
-    input = $stdin.gets.chomp
+    input = gets.chomp
 
     json = JSON.parse(input, symbolize_names: true)
 
