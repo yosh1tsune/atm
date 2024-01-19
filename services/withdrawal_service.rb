@@ -9,9 +9,11 @@ class WithdrawalService
   def execute
     raise ATMUnavailableError unless atm.caixaDisponivel
 
-    raise DuplicatedWithdrawError if duplicated?
+    raise DuplicatedWithdrawalError if duplicated?
 
-    Withdrawal.create(json[:saque])
+    withdrawal = Withdrawal.create(json[:saque])
+
+    SelectNotesService.new(withdrawal: withdrawal).execute
 
     response(atm)
   rescue => e
@@ -21,13 +23,13 @@ class WithdrawalService
   private
 
   def duplicated?
-    Withdrawal.all.any? do |withdraw|
-      withdraw.valor == json[:saque][:valor] && unauthorized_period?(withdraw.horario, json[:saque][:horario])
+    Withdrawal.all.any? do |withdrawal|
+      withdrawal.valor == json[:saque][:valor] && unauthorized_period?(withdrawal.horario, json[:saque][:horario])
     end
   end
 
-  def unauthorized_period?(older_withdraw_time, current_withdraw_time)
-    ((older_withdraw_time - DateTime.parse(current_withdraw_time)) * 24 * 60).to_i.abs < 10
+  def unauthorized_period?(older_withdrawal_time, current_withdrawal_time)
+    ((older_withdrawal_time - DateTime.parse(current_withdrawal_time)) * 24 * 60).to_i.abs < 10
   end
 
   def response(atm, error = '')
