@@ -16,9 +16,3 @@ while input != 'exit' do
   rescue => e
   end
 end
-
-{ "caixa":{ "caixaDisponivel":true, "notas":{ "notasDez":100, "notasVinte":50, "notasCinquenta":10, "notasCem":30 } } }
-
-{"saque":{"valor":80,"horario":"2019-02-13T11:01:01.000Z"}}
-
-{"saque":{"valor":80,"horario":"2019-02-13T11:25:01.000Z"}}
