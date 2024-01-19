@@ -13,7 +13,7 @@ class ATM
   end
 
   def save(json)
-    $atm = { caixaDisponivel: json[:caixa][:caixaDisponivel], notas: soma_notas(json[:caixa][:notas]) }
+    $atm = { caixaDisponivel: json[:caixa][:caixaDisponivel], notas: update_notes(json[:caixa][:notas]) }
     reload
   end
 
@@ -23,7 +23,7 @@ class ATM
 
   private
 
-  def soma_notas(json)
+  def update_notes(json)
     {
       notasDez: notas[:notasDez] + json[:notasDez],
       notasVinte: notas[:notasVinte] + json[:notasVinte],
