@@ -9,6 +9,7 @@ class Withdrawal
 
   def self.create(json)
     $withdrawals << json
+    Withdrawal.new(valor: json[:valor].to_i, horario: DateTime.parse(json[:horario]))
   end
 
   def initialize(valor:, horario:)

@@ -21,6 +21,10 @@ class ATM
     ATM.first
   end
 
+  def value_available
+    (notas[:notasDez] * 10) + (notas[:notasVinte] * 20) + (notas[:notasCinquenta] * 50) + (notas[:notasCem] * 100)
+  end
+
   private
 
   def update_notes(json)

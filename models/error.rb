@@ -13,8 +13,14 @@ class ATMUnavailableError < Error
   end
 end
 
-class DuplicatedWithdrawError < Error
+class DuplicatedWithdrawalError < Error
   def initialize(msg='saque-duplicado')
+    super
+  end
+end
+
+class ValueUnavailableError < Error
+  def initialize(msg='valor-indisponivel')
     super
   end
 end
