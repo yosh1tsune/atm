@@ -1,3 +1,17 @@
+### Instalação
+
+Este projeto conta com Docker, e, estando no diretório do projeto, pode ser configurado com o seguinte comando:
+
+```
+docker-compose build
+```
+
+Caso prefira utilizar o Ruby nativo da máquina, também no diretório do projeto utilize o seguinte comando:
+
+```
+bundle install
+```
+
 ### Como utilizar
 
 A aplicação é iniciada pelo console através do arquivo `app.rb` com os seguinte comandos
