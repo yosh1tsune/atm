@@ -9,7 +9,7 @@ class SelectNotesService
   def execute
     raise ValueUnavailableError if value_unavailable
 
-    select_notes
+    process_withdrawal
   end
 
   private
@@ -18,48 +18,32 @@ class SelectNotesService
     (withdrawal.valor > atm.value_available) || withdrawal.valor % 10 != 0
   end
 
-  def select_notes
+  def process_withdrawal
     value = withdrawal.valor
     while value != 0 do
       if value >= 100 && atm.notas[:notasCem] > 0
-        quantity_needed = (value / 100)
-        if atm.notas[:notasCem] < quantity_needed
-          value = value - (atm.notas[:notasCem] * 100)
-          atm.notas[:notasCem] = 0
-        else
-          value = value - (quantity_needed * 100)
-          atm.notas[:notasCem] = atm.notas[:notasCem] - quantity_needed
-        end
+        value = select_notes(value, 100, :notasCem)
       elsif value >= 50 && atm.notas[:notasCinquenta] > 0
-        quantity_needed = (value / 50)
-        if atm.notas[:notasCinquenta] < quantity_needed
-          value = value - (atm.notas[:notasCinquenta] * 50)
-          atm.notas[:notasCinquenta] = 0
-        else
-          value = value - (quantity_needed * 50)
-          atm.notas[:notasCinquenta] = atm.notas[:notasCinquenta] - quantity_needed
-        end
+        value = select_notes(value, 50, :notasCinquenta)
       elsif value >= 20 && atm.notas[:notasVinte] > 0
-        quantity_needed = (value / 20)
-        if atm.notas[:notasVinte] < quantity_needed
-          value = value - (atm.notas[:notasVinte] * 20)
-          atm.notas[:notasVinte] = 0
-        else
-          value = value - (quantity_needed * 20)
-          atm.notas[:notasVinte] = atm.notas[:notasVinte] - quantity_needed
-        end
+        value = select_notes(value, 20, :notasVinte)
       elsif value >= 10 && atm.notas[:notasDez] > 0
-        quantity_needed = (value / 10)
-        if atm.notas[:notasDez] < quantity_needed
-          value = value - (atm.notas[:notasDez] * 10)
-          atm.notas[:notasDez] = 0
-        else
-          value = value - (quantity_needed * 10)
-          atm.notas[:notasDez] = atm.notas[:notasDez] - quantity_needed
-        end
+        value = select_notes(value, 10, :notasDez)
       end
     end
     atm.notas
+  end
+
+  def select_notes(withdrawal_value, note_value, value_name)
+    quantity_needed = (withdrawal_value / note_value)
+    if atm.notas[value_name] < quantity_needed
+      withdrawal_value = withdrawal_value - (atm.notas[value_name] * note_value)
+      atm.notas[value_name] = 0
+    else
+      withdrawal_value = withdrawal_value - (quantity_needed * note_value)
+      atm.notas[value_name] = atm.notas[value_name] - quantity_needed
+    end
+    withdrawal_value
   end
 end
 
