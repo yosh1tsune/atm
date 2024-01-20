@@ -4,16 +4,17 @@ class Withdrawal
   $withdrawals = []
 
   def self.all
-    $withdrawals.map { |withdraw| Withdrawal.new(valor: withdraw[:valor].to_i, horario: DateTime.parse(withdraw[:horario])) }
-  end
-
-  def self.create(json)
-    $withdrawals << json
-    Withdrawal.new(valor: json[:valor].to_i, horario: DateTime.parse(json[:horario]))
+    $withdrawals.map do |withdrawal|
+      Withdrawal.new(valor: withdrawal[:valor], horario: withdrawal[:horario])
+    end
   end
 
   def initialize(valor:, horario:)
-    @valor = valor
-    @horario = horario
+    @valor = valor.to_i
+    @horario = DateTime.parse(horario)
+  end
+
+  def save
+    $withdrawals << { valor: valor, horario: horario }
   end
 end
