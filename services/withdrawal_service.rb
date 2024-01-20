@@ -7,16 +7,23 @@ class WithdrawalService
   end
 
   def execute
+    raise InexistentATMError unless ATM.first
+
     raise ATMUnavailableError unless atm.caixaDisponivel
 
     raise DuplicatedWithdrawalError if duplicated?
 
-    withdrawal = Withdrawal.create(json[:saque])
+    withdrawal = Withdrawal.new(**json[:saque])
 
     SelectNotesService.new(withdrawal: withdrawal).execute
 
+    withdrawal.save
+
     response(atm)
-  rescue => e
+  rescue InexistentATMError => e
+    puts "\n\n"
+    puts({ 'caixa': {}, 'erros': [e.message] }.to_json)
+  rescue ATMUnavailableError, DuplicatedWithdrawalError, ValueUnavailableError => e
     response(atm, e.message)
   end
 
@@ -34,14 +41,14 @@ class WithdrawalService
 
   def response(atm, error = '')
     puts "\n\n"
-    pp(
+    puts(
       {
         'caixa': {
           'caixaDisponivel': atm.caixaDisponivel,
-          'notas': atm.notas,
-          'erros': [error]
-        }
-      }
+          'notas': atm.notas
+        },
+        'erros': [error]
+      }.to_json
     )
   end
 end
