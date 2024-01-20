@@ -11,7 +11,7 @@ while input != 'exit' do
     if json.has_key?(:caixa)
       RechargesController.recharge(json)
     elsif json.has_key?(:saque)
-      WithdrawalsController.withdraw(json)
+      WithdrawalsController.withdrawal(json)
     end
   rescue => e
   end
