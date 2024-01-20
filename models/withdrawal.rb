@@ -5,7 +5,7 @@ class Withdrawal
 
   def self.all
     $withdrawals.map do |withdrawal|
-      Withdrawal.new(valor: withdrawal[:valor], horario: withdrawal[:horario])
+      Withdrawal.new(valor: withdrawal[:valor], horario: withdrawal[:horario].to_s)
     end
   end
 
