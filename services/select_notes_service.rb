@@ -47,6 +47,8 @@ class SelectNotesService
   end
 end
 
+# Proposta de recursão
+# Um array com os 4 valores possiveis o valor como variavel externa
 
 # Valor Disponivel
 {"caixa":{"caixaDisponivel":true,"notas":{"notasDez":100,"notasVinte":50,"notasCinquenta":10,"notasCem":30}}}
