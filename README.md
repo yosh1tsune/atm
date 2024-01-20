@@ -194,3 +194,7 @@ Saída:
 ```json
 {"caixa":{"caixaDisponivel":true,"notas":{"notasDez":200,"notasVinte":100,"notasCinquenta":20,"notasCem":54}},"erros":["valor-indisponivel"]}
 ```
+
+#### Printscreen ilustrando os cenários em sequência
+
+![Alt text](image.png)
