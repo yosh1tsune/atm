@@ -87,7 +87,7 @@ O fluxo a seguir considera que a aplicação terá funcionamento continuo até o
 docker-compose run app
 ```
 
-## Saque mal-sucedido pelo caixa ser inexistente
+## Saque inválido pelo caixa ser inexistente
 
 Entrada:
 ```json
@@ -99,7 +99,7 @@ Saída:
 {"caixa":{},"erros":["caixa-inexistente"]}
 ```
 
-## Recarga bem sucedida mantendo o caixa indisponível
+## Recarga válida mantendo o caixa indisponível
 
 Entrada:
 ```json
@@ -111,7 +111,7 @@ Saída:
 {"caixa":{"caixaDisponivel":false,"notas":{"notasDez":100,"notasVinte":50,"notasCinquenta":10,"notasCem":30}},"erros":[""]}
 ```
 
-## Saque mal-sucedido pelo caixa esta indisponível
+## Saque inválido pelo caixa esta indisponível
 
 Entrada:
 ```json
@@ -123,7 +123,7 @@ Saída:
 {"caixa":{"caixaDisponivel":false,"notas":{"notasDez":100,"notasVinte":50,"notasCinquenta":10,"notasCem":30}},"erros":["caixa-indisponivel"]}
 ```
 
-## Recarga bem sucedida tornando o caixa disponível
+## Recarga válida tornando o caixa disponível
 
 Entrada:
 ```json
@@ -135,7 +135,7 @@ Saída:
 { "caixa":{ "caixaDisponivel":true, "notas":{ "notasDez":100, "notasVinte":50, "notasCinquenta":10, "notasCem":30 } } }
 ```
 
-## Recarga mal-sucedida pelo caixa estar disponível para uso
+## Recarga inválida pelo caixa estar disponível para uso
 
 Entrada:
 ```json
@@ -147,7 +147,7 @@ Saída:
 {"caixa":{"caixaDisponivel":true,"notas":{"notasDez":200,"notasVinte":100,"notasCinquenta":20,"notasCem":60}},"erros":["caixa-em-uso"]}
 ```
 
-## Saque bem sucedido
+## Saque válido
 
 Entrada:
 ```json
@@ -159,7 +159,7 @@ Saída:
 {"caixa":{"caixaDisponivel":true,"notas":{"notasDez":200,"notasVinte":100,"notasCinquenta":20,"notasCem":54}},"erros":[""]}
 ```
 
-## Saque duplicado
+## Saque inválido por duplicidade
 
 Entrada:
 ```json
@@ -171,7 +171,7 @@ Saída:
 {"caixa":{"caixaDisponivel":true,"notas":{"notasDez":200,"notasVinte":100,"notasCinquenta":20,"notasCem":54}},"erros":["saque-duplicado"]}
 ```
 
-## Saque mal-sucedido por notas indisponíveis
+## Saque inválido por valor acima do disponível
 
 Entrada:
 ```json
@@ -183,7 +183,7 @@ Saída:
 {"caixa":{"caixaDisponivel":true,"notas":{"notasDez":200,"notasVinte":100,"notasCinquenta":20,"notasCem":54}},"erros":["valor-indisponivel"]}
 ```
 
-## Saque mal-sucedido por valor con nota inexistente
+## Saque inválido por valor com notas inexistentes
 
 Entrada:
 ```json
