@@ -1,9 +1,16 @@
 class ATM
   attr_accessor :caixaDisponivel, :notas
 
-  $atm = { caixaDisponivel: false, notas: { notasDez: 0, notasVinte: 0, notasCinquenta: 0, notasCem: 0 } }
+  $atm = nil
+
+  def self.create(json)
+    $atm = { caixaDisponivel: false, notas: json[:notas] }
+    ATM.new(**$atm)
+  end
 
   def self.first
+    return nil unless $atm
+
     ATM.new(**$atm)
   end
 
