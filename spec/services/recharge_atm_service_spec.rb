@@ -19,7 +19,8 @@ describe RechargeATMService do
   end
 
   context 'success' do
-    it 'if atm still inexistent' do
+    it 'if atm is inexistent' do
+      $atm = nil
       atm = service.execute
 
       expect(atm.class).to eq(ATM)

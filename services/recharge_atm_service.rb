@@ -8,7 +8,7 @@ class RechargeATMService
   def execute
     raise ATMUnderUseError.new('caixa-em-uso', atm: atm) if atm.caixaDisponivel
 
-    atm.save(json)
+    atm.update(json[:caixa])
   end
 
   private
