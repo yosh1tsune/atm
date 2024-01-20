@@ -49,15 +49,15 @@ describe ATM do
     end
   end
 
-  context 'update' do
+  context '.add_notes_and_update_status' do
     it 'update global variable' do
       atm_update_values = { caixaDisponivel: true, notas: { notasDez: 10, notasVinte: 10, notasCinquenta: 10, notasCem: 10 }}
-      atm = ATM.new(caixaDisponivel: false, notas: { notasDez: 5, notasVinte: 5, notasCinquenta: 5, notasCem: 5 }).update(atm_update_values)
+      atm = ATM.create(caixaDisponivel: false, notas: { notasDez: 5, notasVinte: 5, notasCinquenta: 5, notasCem: 5 }).add_notes_and_update_status(atm_update_values)
 
-      expect($atm).to eq atm_update_values
+      expect($atm).to eq({ caixaDisponivel: true, notas: { notasDez: 15, notasVinte: 15, notasCinquenta: 15, notasCem: 15 }})
       expect(atm.class).to eq ATM
-      expect(atm.caixaDisponivel).to eq atm_update_values[:caixaDisponivel]
-      expect(atm.notas).to eq atm_update_values[:notas]
+      expect(atm.caixaDisponivel).to eq true
+      expect(atm.notas).to eq({ notasDez: 15, notasVinte: 15, notasCinquenta: 15, notasCem: 15 })
     end
   end
 

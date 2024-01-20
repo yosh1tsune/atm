@@ -19,8 +19,8 @@ class ATM
     @notas = notas
   end
 
-  def update(json)
-    $atm = { caixaDisponivel: json[:caixaDisponivel], notas: json[:notas] }
+  def add_notes_and_update_status(json)
+    $atm = { caixaDisponivel: json[:caixaDisponivel], notas: sum_new_notes(json[:notas]) }
     reload
   end
 
@@ -30,5 +30,16 @@ class ATM
 
   def value_available
     (notas[:notasDez] * 10) + (notas[:notasVinte] * 20) + (notas[:notasCinquenta] * 50) + (notas[:notasCem] * 100)
+  end
+
+  private
+
+  def sum_new_notes(json)
+    {
+      notasDez: notas[:notasDez] + json[:notasDez],
+      notasVinte: notas[:notasVinte] + json[:notasVinte],
+      notasCinquenta: notas[:notasCinquenta] + json[:notasCinquenta],
+      notasCem: notas[:notasCem] + json[:notasCem]
+    }
   end
 end
