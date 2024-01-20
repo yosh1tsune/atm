@@ -19,12 +19,12 @@ class WithdrawalService
 
     withdrawal.save
 
-    response(atm)
+    response(atm.reload)
   rescue InexistentATMError => e
     puts "\n\n"
     puts({ 'caixa': {}, 'erros': [e.message] }.to_json)
   rescue ATMUnavailableError, DuplicatedWithdrawalError, ValueUnavailableError => e
-    response(atm, e.message)
+    response(atm.reload, e.message)
   end
 
   private
