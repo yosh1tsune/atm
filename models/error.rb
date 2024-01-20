@@ -2,8 +2,10 @@ class Error < StandardError
 end
 
 class ATMUnderUseError < Error
-  def initialize(msg='caixa-em-uso')
-    super
+  attr_reader :atm
+  def initialize(msg='caixa-em-uso', atm=nil)
+    @atm = atm[:atm]
+    super(msg)
   end
 end
 
