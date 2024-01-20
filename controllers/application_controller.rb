@@ -1,6 +1,6 @@
 class ApplicationController
   def self.response(atm, error = '')
-    puts "\n\n"
+    puts "\n\nSaída:"
     puts(
       {
         'caixa': {

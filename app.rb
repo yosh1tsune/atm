@@ -4,6 +4,7 @@ input = nil
 
 while input != 'exit' do
   begin
+    puts "\n\nEntrada:"
     input = gets.chomp
 
     json = JSON.parse(input, symbolize_names: true)
