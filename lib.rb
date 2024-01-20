@@ -1,4 +1,3 @@
-require_relative 'models/recharge'
 require_relative 'models/withdrawal'
 require_relative 'models/atm'
 require_relative 'models/error'
