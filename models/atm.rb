@@ -4,7 +4,7 @@ class ATM
   $atm = nil
 
   def self.create(json)
-    $atm = { caixaDisponivel: false, notas: json[:notas] }
+    $atm = { caixaDisponivel: json[:caixaDisponivel], notas: json[:notas] }
     ATM.new(**$atm)
   end
 

@@ -14,5 +14,7 @@ while input != 'exit' do
       WithdrawalsController.withdrawal(json)
     end
   rescue => e
+    puts e.message
+    puts e.backtrace
   end
 end
