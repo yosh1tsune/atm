@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RechargesController < ApplicationController
   def recharge
     atm = RechargeATMService.new(json: json).execute

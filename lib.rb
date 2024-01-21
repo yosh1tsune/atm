@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'models/withdrawal'
 require_relative 'models/atm'
 require_relative 'models/error'

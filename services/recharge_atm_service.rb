@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RechargeATMService
   attr_reader :json
 
@@ -14,13 +16,9 @@ class RechargeATMService
   private
 
   def atm
-    @atm ||= if ATM.first
-               ATM.first
-             else
-               ATM.create({
-                 caixaDisponivel: false,
-                 notas: { notasDez: 0, notasVinte: 0, notasCinquenta: 0, notasCem: 0 }
-               })
-             end
+    @atm ||= ATM.first || ATM.create({
+                                       caixaDisponivel: false,
+                                       notas: { notasDez: 0, notasVinte: 0, notasCinquenta: 0, notasCem: 0 }
+                                     })
   end
 end

@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require_relative 'lib'
 
 input = nil
 
-while input != 'exit' do
+while input != 'exit'
   begin
     puts "\n\nEntrada:"
     input = gets.chomp
 
     json = JSON.parse(input, symbolize_names: true)
 
-    if json.has_key?(:caixa)
+    if json.key?(:caixa)
       RechargesController.new(json).recharge
-    elsif json.has_key?(:saque)
+    elsif json.key?(:saque)
       WithdrawalsController.new(json).withdrawal
     end
-  rescue => e
+  rescue StandardError => e
     puts e.message
     puts e.backtrace
   end

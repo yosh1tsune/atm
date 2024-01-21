@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class ApplicationController
   attr_reader :json
+
   def initialize(json)
     @json = json
   end

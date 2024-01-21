@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module ATMS
   class << self
     attr_accessor :atm
   end
 end
-
 
 class ATM
   attr_accessor :caixaDisponivel, :notas

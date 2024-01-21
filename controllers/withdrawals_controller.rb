@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WithdrawalsController < ApplicationController
   def withdrawal
     atm = ATM.first
