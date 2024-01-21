@@ -32,16 +32,27 @@ ruby app.rb
 docker-compose run app
 ```
 
-As operações são inseridas em texto, no formato JSON, diretamente no terminal, e obrigatoriamente em *single line*. Ex:
+As operações são inseridas em texto, no formato JSON, diretamente no terminal, e após a inserção dos dados no terminal,
+deve ser pressionada a combinação de teclas `Ctrl + D` para iniciar o processamento. Ex:
 
 Abastecimento:
 ```json
-{ "caixa":{ "caixaDisponivel":false, "notas":{ "notasDez":100, "notasVinte":50, "notasCinquenta":10, "notasCem":30 } } }
+{
+  "caixa": {
+    "caixaDisponivel": false,
+    "notas": {
+      "notasDez": 100,
+      "notasVinte": 50,
+      "notasCinquenta": 10,
+      "notasCem": 30
+    }
+  }
+}
 ```
 
 Saque:
 ```json
-{ "saque":{ "valor":600, "horario":"2019-02-13T11:01:01.000Z" } }
+{ "saque": { "valor":600, "horario":"2019-02-13T11:01:01.000Z" } }
 ```
 
 A aplicação também conta com testes unitários, que podem ser verificados com os seguintes comandos
@@ -91,7 +102,12 @@ docker-compose run app
 
 Entrada:
 ```json
-{ "saque":{ "valor":600, "horario":"2019-02-13T11:01:01.000Z" } }
+{
+  "saque": {
+    "valor":600,
+    "horario":"2019-02-13T11:01:01.000Z"
+  }
+}
 ```
 
 Saída:
@@ -103,7 +119,17 @@ Saída:
 
 Entrada:
 ```json
-{ "caixa":{ "caixaDisponivel":false, "notas":{ "notasDez":100, "notasVinte":50, "notasCinquenta":10, "notasCem":30 } } }
+{
+  "caixa": {
+    "caixaDisponivel": false,
+    "notas":{
+      "notasDez": 100,
+      "notasVinte": 50,
+      "notasCinquenta": 10,
+      "notasCem": 30
+    }
+  }
+}
 ```
 
 Saída:
@@ -115,7 +141,12 @@ Saída:
 
 Entrada:
 ```json
-{ "saque":{ "valor":600, "horario":"2019-02-13T11:01:01.000Z" } }
+{
+  "saque": {
+    "valor": 600,
+    "horario": "2019-02-13T11:01:01.000Z"
+  }
+}
 ```
 
 Saída:
@@ -127,7 +158,17 @@ Saída:
 
 Entrada:
 ```json
-{ "caixa":{ "caixaDisponivel":true, "notas":{ "notasDez":100, "notasVinte":50, "notasCinquenta":10, "notasCem":30 } } }
+{
+  "caixa": {
+    "caixaDisponivel": true,
+    "notas": {
+      "notasDez": 100,
+      "notasVinte": 50,
+      "notasCinquenta": 10,
+      "notasCem": 30
+    }
+  }
+}
 ```
 
 Saída:
@@ -139,7 +180,17 @@ Saída:
 
 Entrada:
 ```json
-{ "caixa":{ "caixaDisponivel":true, "notas":{ "notasDez":100, "notasVinte":50, "notasCinquenta":10, "notasCem":30 } } }
+{
+  "caixa": {
+    "caixaDisponivel": true,
+    "notas": {
+      "notasDez": 100,
+      "notasVinte": 50,
+      "notasCinquenta": 10,
+      "notasCem":30
+    }
+  }
+}
 ```
 
 Saída:
@@ -151,7 +202,12 @@ Saída:
 
 Entrada:
 ```json
-{ "saque":{ "valor":600, "horario":"2019-02-13T11:01:01.000Z" } }
+{
+  "saque": {
+    "valor": 600,
+    "horario": "2019-02-13T11:01:01.000Z"
+  }
+}
 ```
 
 Saída:
@@ -163,7 +219,12 @@ Saída:
 
 Entrada:
 ```json
-{ "saque":{ "valor":600, "horario":"2019-02-13T11:01:01.000Z" } }
+{
+  "saque": {
+    "valor": 600,
+    "horario": "2019-02-13T11:10:01.000Z"
+  }
+}
 ```
 
 Saída:
@@ -175,7 +236,12 @@ Saída:
 
 Entrada:
 ```json
-{ "saque":{ "valor":6000000000, "horario":"2019-02-13T11:01:01.000Z" } }
+{
+  "saque": {
+    "valor": 6000000000,
+    "horario": "2019-02-13T11:01:01.000Z"
+  }
+}
 ```
 
 Saída:
@@ -187,7 +253,12 @@ Saída:
 
 Entrada:
 ```json
-{ "saque":{ "valor":123, "horario":"2019-02-13T11:01:01.000Z" } }
+{
+  "saque": {
+    "valor": 123,
+    "horario": "2019-02-13T11:01:01.000Z"
+  }
+}
 ```
 
 Saída:
