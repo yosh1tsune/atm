@@ -48,12 +48,3 @@ class SelectNotesService
     withdrawal_value
   end
 end
-
-# Proposta de recursão
-# Um array com os 4 valores possiveis o valor como variavel externa
-
-# Valor Disponivel
-
-# Valor Indisponivel
-
-{ "saque": { "valor": 600, "horario": '2019-02-13T11:01:01.000Z' } }
