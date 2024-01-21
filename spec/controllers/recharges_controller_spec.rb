@@ -10,7 +10,8 @@ describe RechargesController do
       controller = described_class.new(json)
 
       expect { controller.recharge }.to output(
-        '\n\nSaída:\n{\"caixa\":{\"caixaDisponivel\":false,\"notas\":{\"notasDez\":100,\"notasVinte\":50,\"notasCinquenta\":10,\"notasCem\":30}},\"erros\":[\"\"]}\n'.gsub('\\n', "\n").gsub(
+        "\n\nSaída:\n{\"caixa\":{\"caixaDisponivel\":false,\"notas\":{\"notasDez\":100,\"notasVinte\":50,"\
+        '\"notasCinquenta\":10,\"notasCem\":30}},\"erros\":[\"\"]}\n'.gsub('\\n', "\n").gsub(
           '\\', ''
         )
       ).to_stdout
@@ -26,7 +27,8 @@ describe RechargesController do
       controller = described_class.new(json)
 
       expect { controller.recharge }.to output(
-        '\n\nSaída:\n{\"caixa\":{\"caixaDisponivel\":true,\"notas\":{\"notasDez\":5,\"notasVinte\":5,\"notasCinquenta\":5,\"notasCem\":5}},\"erros\":[\"caixa-em-uso\"]}\n'.gsub('\\n', "\n").gsub(
+        "\n\nSaída:\n{\"caixa\":{\"caixaDisponivel\":true,\"notas\":{\"notasDez\":5,\"notasVinte\":5,"\
+        '\"notasCinquenta\":5,\"notasCem\":5}},\"erros\":[\"caixa-em-uso\"]}\n'.gsub('\\n', "\n").gsub(
           '\\', ''
         )
       ).to_stdout

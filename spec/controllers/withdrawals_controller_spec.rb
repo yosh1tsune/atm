@@ -20,7 +20,8 @@ describe WithdrawalsController do
 
     it do
       expect { controller.withdrawal }.to output(
-        '\n\nSaída:\n{\"caixa\":{\"caixaDisponivel\":true,\"notas\":{\"notasDez\":5,\"notasVinte\":5,\"notasCinquenta\":5,\"notasCem\":4}},\"erros\":[\"\"]}\n'.gsub('\\n', "\n").gsub(
+        "\n\nSaída:\n{\"caixa\":{\"caixaDisponivel\":true,\"notas\":{\"notasDez\":5,\"notasVinte\":5,"\
+        '\"notasCinquenta\":5,\"notasCem\":4}},\"erros\":[\"\"]}\n'.gsub('\\n', "\n").gsub(
           '\\', ''
         )
       ).to_stdout
