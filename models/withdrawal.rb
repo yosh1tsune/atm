@@ -1,10 +1,16 @@
+module Withdrawals
+  class << self
+    attr_accessor :withdrawals
+  end
+end
+
 class Withdrawal
   attr_accessor :valor, :horario
 
-  $withdrawals = []
+  Withdrawals.withdrawals = []
 
   def self.all
-    $withdrawals.map do |withdrawal|
+    Withdrawals.withdrawals.map do |withdrawal|
       Withdrawal.new(valor: withdrawal[:valor], horario: withdrawal[:horario].to_s)
     end
   end
@@ -15,6 +21,6 @@ class Withdrawal
   end
 
   def save
-    $withdrawals << { valor: valor, horario: horario }
+    Withdrawals.withdrawals << { valor: valor, horario: horario }
   end
 end

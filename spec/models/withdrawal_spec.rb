@@ -36,7 +36,7 @@ describe ATM do
     it 'store values into global variable' do
       Withdrawal.new(valor: 300, horario: datetime).save
 
-      expect($withdrawals).to include({ valor: 300, horario: DateTime.parse(datetime) })
+      expect(Withdrawals.withdrawals).to include({ valor: 300, horario: DateTime.parse(datetime) })
     end
   end
 end

@@ -1,17 +1,24 @@
+module ATMS
+  class << self
+    attr_accessor :atm
+  end
+end
+
+
 class ATM
   attr_accessor :caixaDisponivel, :notas
 
-  $atm = nil
+  ATMS.atm = nil
 
   def self.create(json)
-    $atm = { caixaDisponivel: json[:caixaDisponivel], notas: json[:notas] }
-    ATM.new(**$atm)
+    ATMS.atm = { caixaDisponivel: json[:caixaDisponivel], notas: json[:notas] }
+    ATM.new(**ATMS.atm)
   end
 
   def self.first
-    return nil unless $atm
+    return nil unless ATMS.atm
 
-    ATM.new(**$atm)
+    ATM.new(**ATMS.atm)
   end
 
   def initialize(caixaDisponivel:, notas:)
@@ -20,7 +27,7 @@ class ATM
   end
 
   def add_notes_and_update_status(json)
-    $atm = { caixaDisponivel: json[:caixaDisponivel], notas: sum_new_notes(json[:notas]) }
+    ATMS.atm = { caixaDisponivel: json[:caixaDisponivel], notas: sum_new_notes(json[:notas]) }
     reload
   end
 
