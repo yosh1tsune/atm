@@ -10,9 +10,9 @@ while input != 'exit' do
     json = JSON.parse(input, symbolize_names: true)
 
     if json.has_key?(:caixa)
-      RechargesController.recharge(json)
+      RechargesController.new(json).recharge
     elsif json.has_key?(:saque)
-      WithdrawalsController.withdrawal(json)
+      WithdrawalsController.new(json).withdrawal
     end
   rescue => e
     puts e.message

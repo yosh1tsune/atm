@@ -1,5 +1,10 @@
 class ApplicationController
-  def self.response(atm, error = '')
+  attr_reader :json
+  def initialize(json)
+    @json = json
+  end
+
+  def response(atm, error = '')
     puts "\n\nSaída:"
     puts(
       {

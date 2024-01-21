@@ -1,5 +1,5 @@
 class WithdrawalsController < ApplicationController
-  def self.withdrawal(json)
+  def withdrawal
     atm = ATM.first
     WithdrawalService.new(atm: atm, json: json).execute
     response(atm.reload)

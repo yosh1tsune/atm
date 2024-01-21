@@ -1,5 +1,5 @@
 class RechargesController < ApplicationController
-  def self.recharge(json)
+  def recharge
     atm = RechargeATMService.new(json: json).execute
     response(atm.reload)
   rescue ATMUnderUseError => e
